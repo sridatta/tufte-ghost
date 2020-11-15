@@ -2,40 +2,6 @@
  * Main JS file for Casper behaviours
  */
 
-/* globals jQuery, document */
-(function ($, undefined) {
-    "use strict";
-
-    var $document = $(document);
-
-    $document.ready(function () {
-
-        var $postContent = $(".post-content");
-        $postContent.fitVids();
-
-        $(".menu-button, .nav-cover, .nav-close").on("click", function(e){
-            e.preventDefault();
-            $("body").toggleClass("nav-opened nav-closed");
-        });
-
-        // Convert figure image alt-texts to figcaptions.
-        addFigCaptions();
-
-        // If the window is resized, the footnotes will have to move.
-        $(window).resize(placeFootnotes);
-
-        // Javascript is enabled, replace the no-js menu!
-        noScriptSafeMenu();
-    });
-
-    // Wait to make sure everything is loaded before calculating the locations of footnotes.
-    $(window).load(function() {
-        placeFootnotes();
-    });
-
-
-})(jQuery);
-
 var placeFootnotes = function() {
     var top, prev = null;
 
@@ -79,3 +45,37 @@ var noScriptSafeMenu = function() {
     $('.menu-button').removeClass('hidden');
     $('.menu-button').css('transition', 'all 0.5s ease;')
 }
+
+/* globals jQuery, document */
+(function ($, undefined) {
+    "use strict";
+
+    var $document = $(document);
+
+    $document.ready(function () {
+
+        var $postContent = $(".post-content");
+        $postContent.fitVids();
+
+        $(".menu-button, .nav-cover, .nav-close").on("click", function(e){
+            e.preventDefault();
+            $("body").toggleClass("nav-opened nav-closed");
+        });
+
+        // Convert figure image alt-texts to figcaptions.
+        addFigCaptions();
+
+        // If the window is resized, the footnotes will have to move.
+        $(window).resize(placeFootnotes);
+
+        // Javascript is enabled, replace the no-js menu!
+        noScriptSafeMenu();
+    });
+
+    // Wait to make sure everything is loaded before calculating the locations of footnotes.
+    $(window).load(function() {
+        placeFootnotes();
+    });
+
+
+})(jQuery);
